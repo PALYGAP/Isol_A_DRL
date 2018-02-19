@@ -12,7 +12,7 @@ LOOKED_TILE_2 = int((GAME_WIDTH * ((GAME_HEIGTH / 2) + 1)) - 1)
 #### SELF PLAY
 EPISODES = 5          	# Number of self play before retraining the model
 MCTS_SIMS = 100        	# Number of MCTS simutations from one game state ( = number of node explored )
-MEMORY_SIZE = 250     	# Number of memories (training sample) keep for the model retraining
+MEMORY_SIZE = 500     	# Number of memories (training sample) keep for the model retraining
 TURNS_UNTIL_TAU0 = 10 	# turn on which it starts playing deterministically
 CPUCT = 1			  	# in MCTS, the constant determining the level of exploration
 EPSILON = 0.2			# in MCTS, used if the exploration is at the root node. Lead to different formula of U term
@@ -21,7 +21,7 @@ ALPHA = 0.8
 
 #### RETRAINING (and first Training)
 TRAINING_SET_SIZE = 256  # Training set size used during re-training - Sampled from the LT Memories
-EPOCHS = 3			     # Number of full presentation of the training set
+EPOCHS = 1			     # Number of full presentation of the training set
 MINI_BATCH_SIZE = 32     # Size of the mini-Batch
 REG_CONST = 0.0001	     # Regulizer coefficient of the l2 regulizer of KERAS
 LEARNING_RATE = 0.1		 # Learning rate of the SGD
