@@ -96,7 +96,10 @@ while 1:
     
     if len(memory.ltmemory) >= config.MEMORY_SIZE:
 
+        ############################
         ######## RETRAINING ########
+        ############################
+        # Retrains the current network which is the best network (before retraining)
         print('RETRAINING...')
         current_player.retrainTheCurrentModel(memory.ltmemory)
         print('')
@@ -127,7 +130,9 @@ while 1:
             y_dim=env.grid_shape[0]
             x_dim=env.grid_shape[1]
 
-            # Logs for the MOVE half turn
+            ###############################
+            # Logs for the MOVE half turn #
+            ###############################
             lg.logger_memory.info('THE MCTS MOVE VALUES:')
             for r in range(y_dim):
                 lg.logger_memory.info(['----' if float("{0:.2f}".format(x)) == 0 else '{0:.2f}'.format(np.round(x,2)) for x in s['MV'][x_dim * r: (x_dim * r + x_dim)]  ])
@@ -142,7 +147,9 @@ while 1:
             lg.logger_memory.info('INPUT TO MODEL: %s', current_player.model.convertToModelInput(s['state']))
             lg.logger_memory.info('\n')
 
-            # Logs for the TILE half turn
+            ###############################
+            # Logs for the TILE half turn #
+            ###############################
             lg.logger_memory.info('THE MCTS TILE VALUES:')
             for r in range(y_dim):
                 lg.logger_memory.info(['----' if float("{0:.2f}".format(x)) == 0 else '{0:.2f}'.format(np.round(x,2)) for x in s['TV'][x_dim * r: (x_dim * r + x_dim)]  ])
@@ -158,10 +165,11 @@ while 1:
             lg.logger_memory.info('\n')
 
 
-
-
+        ############################
         ######## TOURNAMENT ########
-        print('TOURNAMENT...')
+        ############################
+        # Best player retrained with experiences from last self take on the best player before retraining
+         print('TOURNAMENT...')
         scores, _, points, sp_scores = playMatches(best_player, current_player, config.EVAL_EPISODES, lg.logger_tourney, turns_until_tau0 = 0, memory = None)
         print('\nSCORES')
         print(scores)
