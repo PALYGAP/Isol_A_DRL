@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# %matplotlib inline
+# %matplotlib inline #for Jupyter
 
 import numpy as np
 np.set_printoptions(suppress=True)
