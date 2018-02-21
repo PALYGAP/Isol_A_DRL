@@ -113,7 +113,7 @@ while 1:
         print('')
 
         if iteration % 5 == 0:
-            pickle.dump( memory, open( run_folder + "memory/memory" + str(iteration) + ".p", "wb" ) )
+            pickle.dump( memory, open( run_folder + "memory/memory" + str(iteration).zfill(4) + ".p", "wb" ) )
 
         lg.logger_memory.info('====================')
         lg.logger_memory.info('NEW MEMORIES')
@@ -177,7 +177,7 @@ while 1:
         ######## TOURNAMENT ########
         ############################
         # Best player retrained with experiences from last self take on the best player before retraining
-         print('TOURNAMENT...')
+        print('TOURNAMENT...')
         scores, _, points, sp_scores = playMatches(best_player, current_player, config.EVAL_EPISODES, lg.logger_tourney, turns_until_tau0 = 0, memory = None)
         print('\nSCORES')
         print(scores)
